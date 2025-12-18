@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Environment variables
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Uploads and generated files
+backend/uploads/*.jpg
+backend/uploads/*.jpeg
+backend/uploads/*.png
+backend/uploads/*.pdf
+!backend/uploads/.gitkeep
+
+# Logs
+*.log
+npm-debug.log*
+logs/
+*.log.*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+*.swp
+*.swo
+*~
+
+# Build files
+dist/
+build/
+coverage/
+.nyc_output/
+temp/
+
+# Frontend specific
+frontend/CV-Templates/dist/
+frontend/CV-Templates/node_modules/
+config.bat
