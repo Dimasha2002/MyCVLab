@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - {{fullName}}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: white;
+        }
+        
+        .container {
+            max-width: 210mm;
+            margin: 0 auto;
+            background: #fff;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .name {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .job-title {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            opacity: 0.9;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            font-size: 0.95rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .contact-item::before {
+            content: '●';
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .main-content {
+            padding: 0;
+        }
+        
+        .section {
+            padding: 30px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-title {
+            font-size: 1.4rem;
+            color: #2563eb;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #2563eb;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            display: inline-block;
+        }
+        
+        .summary-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #4b5563;
+            text-align: justify;
+        }
+        
+        .two-column {
+            column-count: 2;
+            column-gap: 40px;
+            column-fill: balance;
+        }
+        
+        .section {
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        .experience-item, .education-item {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 10px;
+            border-left: 4px solid #2563eb;
+        }
+        
+        .item-header {
+            margin-bottom: 15px;
+        }
+        
+        .item-title {
+            font-size: 1.2rem;
+            color: #1f2937;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .item-subtitle {
+            font-size: 1rem;
+            color: #2563eb;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .item-period {
+            font-size: 0.9rem;
+            color: #6b7280;
+            font-style: italic;
+        }
+        
+        .item-description {
+            color: #4b5563;
+            line-height: 1.7;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .skill-category {
+            background: #f1f5f9;
+            padding: 20px;
+            border-radius: 10px;
+            border-top: 3px solid #2563eb;
+        }
+        
+        .skill-category h4 {
+            color: #2563eb;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        
+        .skill-list {
+            list-style: none;
+        }
+        
+        .skill-item {
+            padding: 8px 0;
+            color: #4b5563;
+            font-size: 0.95rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .skill-item:last-child {
+            border-bottom: none;
+        }
+        
+        .skill-item::before {
+            content: '▸';
+            color: #2563eb;
+            margin-right: 8px;
+        }
+        
+        .languages-list {
+            list-style: none;
+        }
+        
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .language-item:last-child {
+            border-bottom: none;
+        }
+        
+        .language-name {
+            font-weight: 600;
+            color: #1f2937;
+        }
+        
+        .proficiency {
+            background: #2563eb;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .certifications-list {
+            list-style: none;
+        }
+        
+        .certification-item {
+            background: #fefefe;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .certification-name {
+            font-size: 1.1rem;
+            color: #1f2937;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .certification-issuer {
+            color: #2563eb;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .certification-date {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+        
+        .credential-id {
+            font-size: 0.85rem;
+            color: #6b7280;
+            font-family: monospace;
+            margin-top: 5px;
+        }
+        
+        .certification-link {
+            margin-top: 8px;
+        }
+        
+        .certification-link a {
+            color: #2563eb;
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #2563eb;
+            padding-bottom: 1px;
+        }
+        
+        .certification-link a:hover {
+            color: #1e40af;
+            border-bottom-color: #1e40af;
+        }
+        
+        .project-item {
+            background: #fefefe;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .project-header h4 {
+            font-size: 1.1rem;
+            color: #1f2937;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        .project-role {
+            font-size: 0.9rem;
+            color: #2563eb;
+            font-weight: 500;
+        }
+        
+        .project-date {
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-bottom: 10px;
+        }
+        
+        .project-description {
+            color: #4b5563;
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+        
+        .project-technologies {
+            margin: 12px 0;
+            padding: 12px;
+            background: #f0f9ff;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+        
+        .project-technologies strong {
+            color: #2563eb;
+            font-weight: 600;
+        }
+        
+        .project-links {
+            margin-top: 12px;
+            display: flex;
+            gap: 15px;
+        }
+        
+        .project-link {
+            color: #2563eb;
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #2563eb;
+            padding-bottom: 1px;
+            font-weight: 500;
+        }
+        
+        .project-link:hover {
+            color: #1e40af;
+            border-bottom-color: #1e40af;
+        }
+        
+        .links-list {
+            list-style: none;
+        }
+        
+        .link-item {
+            margin-bottom: 12px;
+        }
+        
+        .link-item a {
+            color: #1e40af;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            background: #eff6ff;
+            border-radius: 8px;
+            border: 1px solid #dbeafe;
+            transition: all 0.2s;
+        }
+        
+        .link-item a:before {
+            content: '🔗';
+            margin-right: 10px;
+            font-size: 1rem;
+        }
+        
+        .link-item a:hover {
+            background: #dbeafe;
+            border-color: #93c5fd;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.1);
+        }
+        
+        @media print {
+            .container {
+                box-shadow: none;
+            }
+            
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .name {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="name">{{fullName}}</h1>
+            <h2 class="job-title">{{jobTitle}}</h2>
+            <div class="contact-info">
+                <span class="contact-item">{{email}}</span>
+                <span class="contact-item">{{phone}}</span>
+                <span class="contact-item">{{address}}</span>
+            </div>
+        </header>
+
+        <div class="main-content">
+            {{aboutSection}}
+
+            <div class="two-column">
+                {{experienceSection}}
+
+                {{educationSection}}
+
+                {{skillsSection}}
+
+                {{projectsSection}}
+
+                {{certificationsSection}}
+
+                {{languagesSection}}
+
+                {{socialLinksSection}}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

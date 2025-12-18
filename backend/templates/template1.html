@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - {{fullName}}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+        }
+        
+        .container {
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #2c3e50;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .profile-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            display: block;
+            border: 4px solid #2c3e50;
+        }
+        
+        .name {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .job-title {
+            font-size: 1.3rem;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .contact-item {
+            color: #555;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            border-bottom: 2px solid #bdc3c7;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .summary {
+            font-size: 1rem;
+            text-align: justify;
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        .two-column {
+            column-count: 2;
+            column-gap: 30px;
+            column-fill: balance;
+        }
+        
+        .section {
+            break-inside: avoid;
+            page-break-inside: avoid;
+        }
+        
+        .left-column {
+            display: none;
+        }
+        
+        .right-column {
+            display: none;
+        }
+        
+        .experience-item, .education-item {
+            margin-bottom: 25px;
+        }
+        
+        .experience-header h4, .education-header h4 {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .experience-meta, .education-meta {
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .company, .institution {
+            font-weight: bold;
+            color: #34495e;
+        }
+        
+        .duration {
+            font-style: italic;
+            color: #7f8c8d;
+        }
+        
+        .experience-description {
+            text-align: justify;
+            color: #555;
+            margin-top: 10px;
+        }
+        
+        .skills {
+            list-style: none;
+        }
+        
+        .skill-item {
+            background: #ecf0f1;
+            padding: 8px 12px;
+            margin: 5px 0;
+            border-left: 4px solid #3498db;
+            font-size: 0.9rem;
+        }
+        
+        .languages {
+            list-style: none;
+        }
+        
+        .language-item {
+            padding: 5px 0;
+            border-bottom: 1px solid #ecf0f1;
+            font-size: 0.9rem;
+        }
+        
+        .proficiency {
+            float: right;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        .certification-item {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-left: 4px solid #e74c3c;
+        }
+        
+        .certification-item h4 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .certification-issuer {
+            font-weight: bold;
+            color: #34495e;
+            margin-bottom: 5px;
+        }
+        
+        .certification-date {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+        
+        .credential-id {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            font-family: monospace;
+            margin-top: 5px;
+        }
+        
+        .certification-link {
+            margin-top: 8px;
+        }
+        
+        .certification-link a {
+            color: #3498db;
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #3498db;
+            padding-bottom: 1px;
+        }
+        
+        .certification-link a:hover {
+            color: #2980b9;
+            border-bottom-color: #2980b9;
+        }
+        
+        .project-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-left: 4px solid #3498db;
+        }
+        
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        
+        .project-header h4 {
+            color: #2c3e50;
+            font-size: 1.2rem;
+            margin: 0;
+        }
+        
+        .project-role {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        .project-date {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+        
+        .project-description {
+            text-align: justify;
+            color: #555;
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+        
+        .project-technologies {
+            margin: 10px 0;
+            padding: 10px;
+            background: #ecf0f1;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+        
+        .project-technologies strong {
+            color: #2c3e50;
+        }
+        
+        .project-links {
+            margin-top: 10px;
+            display: flex;
+            gap: 15px;
+        }
+        
+        .project-link {
+            color: #3498db;
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #3498db;
+            padding-bottom: 1px;
+        }
+        
+        .project-link:hover {
+            color: #2980b9;
+            border-bottom-color: #2980b9;
+        }
+        
+        .links-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .link-item {
+            margin-bottom: 10px;
+        }
+        
+        .link-item a {
+            color: #1e40af;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            padding: 10px 12px;
+            background: #eff6ff;
+            border-radius: 6px;
+            border-left: 3px solid #3498db;
+            transition: all 0.2s;
+        }
+        
+        .link-item a:before {
+            content: '→';
+            margin-right: 8px;
+            font-size: 1.2rem;
+            color: #3498db;
+            font-weight: bold;
+        }
+        
+        .link-item a:hover {
+            background: #dbeafe;
+            border-left-color: #2563eb;
+            transform: translateX(3px);
+        }
+        
+        @media print {
+            .container {
+                padding: 0;
+                box-shadow: none;
+            }
+            
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            {{profilePhotoElement}}
+            <h1 class="name">{{fullName}}</h1>
+            <h2 class="job-title">{{jobTitle}}</h2>
+            <div class="contact-info">
+                <span class="contact-item">📧 {{email}}</span>
+                <span class="contact-item">📞 {{phone}}</span>
+                <span class="contact-item">📍 {{address}}</span>
+            </div>
+        </header>
+
+        {{aboutSection}}
+
+        <div class="two-column">
+            {{experienceSection}}
+
+            {{educationSection}}
+
+            {{skillsSection}}
+
+            {{projectsSection}}
+
+            {{certificationsSection}}
+
+            {{languagesSection}}
+
+            {{socialLinksSection}}
+        </div>
+    </div>
+</body>
+</html>
